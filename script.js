@@ -1,5 +1,6 @@
 const screen=document.getElementById('screen');
 const buttons=document.getElementsByClassName('button');
+const clearBtn=document.getElementById('clear_button');
 
 const add=(a,b)=>a+b;
 const substract=(a,b)=>a-b;
@@ -11,7 +12,13 @@ let acc=null;
 let operation;
 
 function writeOnScreen(){
-    screen.innerHTML=num;
+    if((Math.round( num * 100) / 100).toString().length<10){
+         screen.innerHTML=Math.round( num * 100) / 100;
+    }
+    else{
+        screen.innerHTML="Error";
+    }
+
 }
 
 function pushedNumber(value){
@@ -21,13 +28,15 @@ function pushedNumber(value){
         return;
     }
     let newNumber=num.toString()+value.toString();
+
     num=parseInt(newNumber);
+    
     writeOnScreen();  
 }
 
 
 function pushedOperation(value){
-    if(value=="=" && acc!=null){
+    if(value=="=" || acc!=null){
         switch(operation){
             case "+":
                 num=add(acc,num);
@@ -43,17 +52,16 @@ function pushedOperation(value){
                 break;
         }
     writeOnScreen(); 
-    return; 
     }
     operation=value;
         acc=num;
         num=0;
-}
+};
 
 
 
-function calculate(pushedButton){
-
+function whatToDo(pushedButton){
+    console.log('hm');
     let value=pushedButton.target.innerHTML;
 
 
@@ -65,13 +73,37 @@ function calculate(pushedButton){
            pushedOperation(value);   
     }
 
-    console.log(acc,num);
-}
 
+    console.log(acc,num);
+
+};
+
+function clearVals(){
+    num=0;
+    acc=null;
+    operation=null;
+    writeOnScreen(); 
+};
+
+function keyboardSupport(e){
+    console.log(e);
+    if(e.which>47&&e.which<58||e.which>96&&e.which<106){
+        pushedNumber(e.key);
+    }
+    else if(e.key=="+"||e.key=="-"||e.key=="*"||e.key=="/"||e.key=="="){
+        pushedOperation(e.key);
+    }
+}
 
 
 writeOnScreen(); //A 0-t is írjuk ki egyből.
 
+
+clearBtn.addEventListener("click",clearVals);
+
 Array.from(buttons).forEach(button => {
-    button.addEventListener('click',e=>calculate(e));
+    button.addEventListener('click',e=>whatToDo(e));
 });
+
+document.addEventListener("keydown",e=>keyboardSupport(e));
+

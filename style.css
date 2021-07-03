@@ -32,7 +32,18 @@
         font-family: "DIGITAL-7";
         font-size: 6rem;
 }
-
+.clear_button_container{
+        display: flex;
+        justify-content: flex-end;
+        margin:0 auto;
+        width:80%;
+}
+.clear_button{
+        width:100%;
+        font-size: 2rem;
+        border-radius: 10px;
+        background-color: rgb(119, 199, 0);
+}
 .buttons_container{
         width:90%;
         min-height: 70%;
@@ -55,6 +66,7 @@
         height: auto;
         padding:5px;
         max-width: 22%;
+        border-radius: 10px;
    
 }
 .op{
