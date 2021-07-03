@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "DIGITAL-7";
+    src: url("./src/digital-7.ttf") format('truetype');
+}
+
 .body{
         margin:0;
 }
@@ -5,6 +10,8 @@
 .calculator_body{
         width:40vw;
         height:80vh;
+        min-height:500px;
+        overflow-y:scroll;
         margin:5% auto;
         border:2px solid black;
         border-radius: 10px;
@@ -15,17 +22,21 @@
 .screen{
         margin: 20px auto ;
         width:90%;
-        height:30%;
+        height:15%;
         border:2px solid black;
         border-radius:10px;
-        background-color:rgb(241, 237, 173)
-
+        background-color:rgb(241, 237, 173);
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        font-family: "DIGITAL-7";
+        font-size: 6rem;
 }
 
 .buttons_container{
         width:90%;
-        min-height: 20%;
-        max-height: 60%;
+        min-height: 70%;
+        max-height: 80%;
         margin:0 auto;
         display: flex;
         flex-direction: row;
