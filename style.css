@@ -43,6 +43,7 @@
         font-size: 2rem;
         border-radius: 10px;
         background-color: rgb(119, 199, 0);
+        user-select: none;
 }
 .buttons_container{
         width:90%;
@@ -53,7 +54,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-items: stretch;
-        justify-content: stretch;
+        justify-content: center;
     
 }
 
@@ -73,3 +74,17 @@
         background-color: rgb(253, 48, 48);
         color:rgb(243, 217, 217);
 }
+
+@media only screen and (max-width: 600px) {
+    .calculator_body{
+        width:90vw;
+        height:90vh;
+    }
+    .buttons_container{
+        width: 100%;
+    }
+    .button{
+        font-size:2rem;
+        flex-basis: 20%;
+    }
+  }
